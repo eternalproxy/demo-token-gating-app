@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Poppins";
+  src: url("/fonts/Poppins-Medium.woff");
+  font-style: normal;
+  font-weight: 400;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  background-color: black;
+}
+
+.epsButton {
+  background: #5286fe;
+  border-radius: 50px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  text-align: center;
+  color: #ffffff;
+}
+
+.blueBackground {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 1) 0%,
+    #5286fe 60%,
+    rgba(0, 0, 0, 1) 100%
+  );
+}
+
+.patternBackground {
+  background-size: contain;
+  background-repeat: repeat-y;
+}
+
+.accountBackground {
+  background-size: cover;
+}
+
+.standardText {
+  font-family: "Mukta";
+  font-style: normal;
+  font-weight: 400;
+  line-height: 43px;
+  text-align: justify;
+  color: #eae5e5;
+  text-shadow: 0px 0px 34px rgba(0, 0, 0, 0.55);
+}
+
+.footerImg {
+  mix-blend-mode: luminosity;
+}
