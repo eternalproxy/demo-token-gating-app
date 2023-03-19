@@ -47,7 +47,7 @@ export default function Home() {
                   <ul className="mt-4 ml-8 text-lg text-gray-600 list-disc">
                     <li>When a user connects a wallet, the app checks the NFTs on their eps cold wallet.</li>
                     <li>If the user has NFTs on their eps cold wallet, they can create an account.</li>
-                    <li>If they don't have NFTs on their eps cold wallet, they can't.</li>
+                    <li>If they do not have NFTs on their eps cold wallet, they cannot.</li>
                     <li>NFTs on the hot (connected) address are ignored.</li>
                     <li>There is no server and nothing is stored.</li>
                   </ul>
@@ -58,16 +58,16 @@ export default function Home() {
                     Get started
                   </h2>
                   <p className="mt-4 text-lg text-gray-600">
-                    The app uses the multi-chain imoo NFT. You can mint them for free at <a href="https://nexus.imoo.io/" target="_blank" className="text-blue-600 underline">nexus.imoo.io</a>. Please mint them to your cold address.
+                    The app uses the multi-chain imoo NFT. You can mint them for free at <a href="https://nexus.imoo.io/" target="_blank" rel="noreferrer" className="text-blue-600 underline">nexus.imoo.io</a>. Please mint them to your cold address.
                   </p>
                   <p className="mt-4 text-lg text-gray-600">
-                    After that, set up a proxy from your cold to your hot (on Goerli) by following the instructions <a href="https://view-goerli.eternalproxy.com/" target="_blank" className="text-blue-600 underline">here</a>.
+                    After that, set up a proxy from your cold to your hot (on Goerli) by following the instructions <a href="https://view-goerli.eternalproxy.com/" target="_blank" rel="noreferrer" className="text-blue-600 underline">here</a>.
                   </p>
                 </div>
 
                 <div className="mt-8">
                   <p className="text-lg text-center text-gray-600">
-                    For more information, follow us on Twitter at <a href="https://twitter.com/eternalproxy" target="_blank" className="text-blue-600 underline">@eternalproxy</a>.
+                    For more information, follow us on Twitter at <a href="https://twitter.com/eternalproxy" target="_blank" rel="noreferrer" className="text-blue-600 underline">@eternalproxy</a>.
                   </p>
                 </div>
               </div>

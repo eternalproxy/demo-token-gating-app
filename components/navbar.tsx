@@ -26,6 +26,7 @@ export default function Navbar() {
         <Link
           href="https://view-goerli.eternalproxy.com/"
           target="_blank"
+          rel="noreferrer"
           className="text-center text-white font-bold font-chaney hover:scale-105"
         >
           viewer
@@ -33,6 +34,7 @@ export default function Navbar() {
         <Link
           href="https://discord.gg/rDasAuNwvh"
           target="_blank"
+          rel="noreferrer"
           className="text-center text-white font-bold font-chaney hover:scale-105"
         >
           discord
@@ -40,6 +42,7 @@ export default function Navbar() {
         <Link
           href="https://twitter.com/eternalproxy"
           target="_blank"
+          rel="noreferrer"
           className="text-center text-white font-bold font-chaney hover:scale-105"
         >
           twitter

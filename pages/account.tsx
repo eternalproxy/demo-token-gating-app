@@ -162,6 +162,7 @@ export default function Account() {
                 href="https://www.eternalproxy.com/setting-up-a-proxy/"
                 className="text-blue-400"
                 target="_blank"
+                rel="noreferrer"
               >
                 eps (eternal proxy service)
               </a>
@@ -172,6 +173,7 @@ export default function Account() {
                 href="https://nexus.imoo.io/"
                 className="text-blue-400"
                 target="_blank"
+                rel="noreferrer"
               >
                 imoo
               </a> to your COLD address{" "}
