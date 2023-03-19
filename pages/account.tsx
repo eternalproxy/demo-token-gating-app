@@ -5,9 +5,15 @@ import { useAccountContext } from "../context/AccountContext";
 
 export default function Account() {
   const [showSignUp, setShowSignup] = useState<boolean>();
-  const { provider, walletAddress, tokenIds, accountData, createUser } =
+  const { provider, walletAddress, nftData, accountData, createUser } =
     useAccountContext();
-  const [selectedToken, setSelectedToken] = useState<string>("");
+  const [selectedToken, setSelectedToken] = useState<{tokenId: string, imageData: string}>();
+
+  const shortenTokenId = (number: any) => {
+    let tokenCount = BigInt(number) / BigInt(100000000000000000000000000000000000000000000000000000000000000000)
+    return tokenCount.toString()
+  };
+
 
   const registeredView = () => {
     if (!accountData) {
@@ -31,7 +37,7 @@ export default function Account() {
 
         <div className="flex flex-row mx-auto gap-8">
           <img
-            src={`https://composethis.art/img/?base=https://arweave.net/-HWRbVWBXFrepBjB0usL4BWooqkqHYFnwbvG7DA_6sI/odd.png&t1=epsdemo%20${accountData.repTokenId}.png`}
+            src={selectedToken?.imageData}
             className="w-1/2 rounded-xl"
           />
           <div className="w-1/2 flex flex-col gap-4">
@@ -39,7 +45,7 @@ export default function Account() {
               eps token gating demo nft
             </h1>
             <p className="text-white font-mukta text-xl text-left">
-              Token ID: #{accountData.repTokenId}
+              Token ID: #{shortenTokenId(accountData.repTokenId)}
             </p>
           </div>
         </div>
@@ -51,7 +57,9 @@ export default function Account() {
 
     const accountName = event.target.name.value;
 
-    createUser(accountName, selectedToken);
+    if (selectedToken?.tokenId != null) {
+      createUser(accountName, selectedToken?.tokenId);
+    }
   };
 
   const unregisteredView = (
@@ -68,7 +76,7 @@ export default function Account() {
             <button
               className="epsButton px-4 py-2 text-center text-2xl hover:scale-105 mx-auto"
               onClick={() => {
-                setSelectedToken(tokenIds[0]);
+                setSelectedToken({tokenId: nftData[0].tokenId, imageData: nftData[0].imageData});
                 setShowSignup(true);
               }}
             >
@@ -100,19 +108,20 @@ export default function Account() {
 
             <label>Token to gate with:</label>
 
-            <div className="grid grid-cols-4 gap-8">
-              {tokenIds.map((tokenId: string) => (
-                <img
-                  key={tokenId}
-                  src={`https://composethis.art/img/?base=https://arweave.net/-HWRbVWBXFrepBjB0usL4BWooqkqHYFnwbvG7DA_6sI/odd.png&t1=epsdemo%20${tokenId}.png`}
-                  className={`rounded-xl hover:scale-105 cursor-pointer ${
-                    selectedToken === tokenId ? "border-4 border-red-500" : ""
-                  }`}
-                  onClick={() => {
-                    setSelectedToken(tokenId);
-                  }}
-                />
-              ))}
+            <div className="grid grid-cols-4 gap-4">
+            {nftData.map(({tokenId, imageData}) => (
+              <img
+                key={tokenId}
+                src={imageData}
+                className={`rounded-xl hover:scale-105 cursor-pointer ${
+                  selectedToken?.tokenId === tokenId ? "border-4 border-red-500" : ""
+                }`}
+                onClick={() => {
+                  setSelectedToken({tokenId: tokenId, imageData: imageData});
+                }}
+              />
+            ))}
+
             </div>
 
             <button
@@ -141,20 +150,32 @@ export default function Account() {
     }
 
     if (!accountData || accountData.name == "") {
-      if (!tokenIds || tokenIds.length == 0) {
+      if (!nftData || nftData.length == 0) {
         return (
           <div className="space-y-4">
             <h1 className="text-center font-chaney text-3xl text-white">
-              No eps found on this address...
+              No imoo found on cold wallets for this address...
             </h1>
             <p className="text-center font-mukta text-xl text-white">
               Ensure you have setup{" "}
               <a
                 href="https://www.eternalproxy.com/setting-up-a-proxy/"
                 className="text-blue-400"
+                target="_blank"
               >
-                EPS (Eternal Proxy Service)
+                eps (eternal proxy service)
               </a>
+            </p>
+
+            <p className="text-center font-mukta text-xl text-white">
+              And minted some               <a
+                href="https://nexus.imoo.io/"
+                className="text-blue-400"
+                target="_blank"
+              >
+                imoo
+              </a> to your COLD address{" "}
+
             </p>
           </div>
         );

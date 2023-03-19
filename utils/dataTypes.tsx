@@ -12,7 +12,7 @@ export type AccountContextType = {
   walletAddress: string;
   userAuth: Web3Auth | null;
   provider: SafeEventEmitterProvider | null;
-  tokenIds: string[];
+  nftData: {tokenId: string, imageData: string}[];
   accountData: AccountData | null;
   loadingUser: boolean;
   login: () => Promise<void>;

@@ -18,7 +18,7 @@ const AccountContextDefaultValues: AccountContextType = {
   walletAddress: "",
   userAuth: null,
   provider: null,
-  tokenIds: [],
+  nftData: [],
   accountData: null,
   loadingUser: false,
   login: () => Promise.resolve(),
@@ -40,7 +40,7 @@ export function AccountProvider({ children }: AccountWrapperProps) {
   const [provider, setProvider] = useState<SafeEventEmitterProvider | null>(
     null
   );
-  const [tokenIds, setTokenIds] = useState<string[]>([]);
+  const [nftData, setNftData] = useState<{tokenId: string, imageData: string}[]>([]);
   const [accountData, setAccountData] = useState<AccountData | null>(null);
   const [loadingUser, setLoadingUser] = useState<boolean>(false);
   const clientId =
@@ -91,7 +91,7 @@ export function AccountProvider({ children }: AccountWrapperProps) {
     const address = await rpc.getAccounts();
     setWalletAddress(address);
 
-    await rpc.getNFTHolding().then((tokenIds) => setTokenIds(tokenIds));
+    await rpc.getNFTHolding().then((nftData) => setNftData(nftData));
 
     await fetchUser(address);
     setLoadingUser(false);
@@ -124,7 +124,7 @@ export function AccountProvider({ children }: AccountWrapperProps) {
     walletAddress,
     userAuth,
     provider,
-    tokenIds,
+    nftData,
     accountData,
     loadingUser,
     login,

@@ -18,10 +18,10 @@ export default function Navbar() {
           main
         </Link>
         <Link
-          href="/#info"
+          href="/#instructions"
           className="text-center text-white font-bold font-chaney hover:scale-105"
         >
-          info
+          instructions
         </Link>
         <Link
           href="https://view-goerli.eternalproxy.com/"
